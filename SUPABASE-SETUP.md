@@ -1,20 +1,16 @@
 # RouteFlow — Supabase Einrichtung
 
-## 1. Supabase Projekt erstellen
-1. Gehe zu https://supabase.com/dashboard
-2. Klicke "New Project"
-3. Wähle:
-   - Name: `routeflow`
-   - Database Password: ein sicheres Passwort
-   - Region: Frankfurt (eu-central-1)
-   - Wait for provisioning to finish
-4. Projekt ist nach ~2 Minuten bereit
+## Deine Projekt-Daten
+- **URL**: https://wlntdgfqhumhboeuaprm.supabase.co
+- **Anon Key**: `sb_publishable_g-_jKRxv1BQOnXF5jAHXFQ_c90MG1Rd`
+- **.env** Datei ist bereits angelegt
 
-## 2. Datenbank-Tabellen anlegen
-In der SQL Editor (Links "SQL Editor" → "New Query"):
+## Tabellen erstellen
+
+In Supabase Dashboard → SQL Editor → "New Query" ausführen:
 
 ```sql
--- Users Tabelle
+-- Users
 CREATE TABLE IF NOT EXISTS users (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   email VARCHAR(255) UNIQUE NOT NULL,
@@ -24,7 +20,7 @@ CREATE TABLE IF NOT EXISTS users (
   updated_at TIMESTAMP DEFAULT NOW()
 );
 
--- Touren Tabelle
+-- Touren
 CREATE TABLE IF NOT EXISTS tours (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   user_id UUID REFERENCES users(id) ON DELETE CASCADE,
@@ -36,7 +32,7 @@ CREATE TABLE IF NOT EXISTS tours (
   created_at TIMESTAMP DEFAULT NOW()
 );
 
--- Statistiken Tabelle
+-- Statistiken
 CREATE TABLE IF NOT EXISTS stats (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   user_id UUID REFERENCES users(id) ON DELETE CASCADE,
@@ -45,7 +41,7 @@ CREATE TABLE IF NOT EXISTS stats (
   last_updated TIMESTAMP DEFAULT NOW()
 );
 
--- RLS Policies (jeder sieht nur seine Daten)
+-- Row Level Security
 ALTER TABLE users ENABLE ROW LEVEL SECURITY;
 ALTER TABLE tours ENABLE ROW LEVEL SECURITY;
 ALTER TABLE stats ENABLE ROW LEVEL SECURITY;
@@ -58,20 +54,18 @@ CREATE POLICY "Users can read own tours" ON tours FOR SELECT USING (auth.uid() =
 CREATE POLICY "Users can insert own tours" ON tours FOR INSERT WITH CHECK (auth.uid() = user_id);
 
 CREATE POLICY "Users can read own stats" ON stats FOR SELECT USING (auth.uid() = user_id);
-CREATE POLICY "Users can insert own stats" ON stats FOR UPDATE USING (auth.uid() = user_id);
+CREATE POLICY "Users can update own stats" ON stats FOR UPDATE USING (auth.uid() = user_id);
 ```
 
-## 3. Umgebungsvariablen setzen
-1. Im Supabase Dashboard: Project Settings → API
-2. Kopiere `Project URL` und `anon/public` key
-3. Erstelle `.env` Datei im Projekt:
-```
-VITE_SUPABASE_URL=https://your-project.supabase.co
-VITE_SUPABASE_ANON_KEY=your-anon-key
-```
+## RLS Policies für anonymous access (optional)
+Wenn du keine Anmeldung willst und nur die Tabellen brauchst:
 
-## 4. Deployment auf Vercel (optional)
-1. Repo auf GitHub pushen
-2. Auf vercel.com importieren
-3. Umgebungsvariablen setzen
-4. Auto-Deploy aktiviert
+```sql
+-- Für den Anfang: alle Tabellen öffentlich lesbar/schreibbar
+CREATE POLICY "Allow anonymous read" ON users FOR SELECT USING (true);
+CREATE POLICY "Allow anonymous insert" ON users FOR INSERT WITH CHECK (true);
+CREATE POLICY "Allow anonymous read tours" ON tours FOR SELECT USING (true);
+CREATE POLICY "Allow anonymous insert tours" ON tours FOR INSERT WITH CHECK (true);
+CREATE POLICY "Allow anonymous read stats" ON stats FOR SELECT USING (true);
+CREATE POLICY "Allow anonymous update stats" ON stats FOR UPDATE USING (true);
+```
