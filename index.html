@@ -1,12 +1,77 @@
 <!doctype html>
-<html lang="en">
+<html lang="de">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>RouteFlow — Tourenplaner</title>
-    <meta name="description" content="Optimiere deine Lieferfahrten mit RouteFlow" />
+    <link rel="apple-touch-icon" href="/pwa-192x192.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#071437" media="(prefers-color-scheme: light)" />
+    <meta name="description" content="RouteFlow — Dein smarter Tourenplaner für Lieferfahrten. Einmal Startadresse eingeben, Adressen hochladen oder tippen, optimierte Route mit Karte sehen." />
+    <meta name="keywords" content="Tourenplaner, Lieferroute, Routenoptimierung, Lieferdienst, OpenStreetMap" />
     <link rel="manifest" href="/manifest.json" />
+    <style>
+      @font-face {
+        font-family: 'Cormorant';
+        font-style: normal;
+        font-weight: 400;
+        src: local('Cormorant Regular'), url('/fonts/Cormorant-Regular.woff2') format('woff2');
+      }
+      @font-face {
+        font-family: 'Cormorant';
+        font-style: normal;
+        font-weight: 500;
+        src: local('Cormorant Medium'), url('/fonts/Cormorant-Medium.woff2') format('woff2');
+      }
+      @font-face {
+        font-family: 'Cormorant';
+        font-style: normal;
+        font-weight: 600;
+        src: local('Cormorant SemiBold'), url('/fonts/Cormorant-SemiBold.woff2') format('woff2');
+      }
+      @font-face {
+        font-family: 'Cormorant';
+        font-style: normal;
+        font-weight: 700;
+        src: local('Cormorant Bold'), url('/fonts/Cormorant-Bold.woff2') format('woff2');
+      }
+      @font-face {
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 400;
+        src: local('Montserrat Regular'), url('/fonts/Montserrat-Regular.woff2') format('woff2');
+      }
+      @font-face {
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 500;
+        src: local('Montserrat Medium'), url('/fonts/Montserrat-Medium.woff2') format('woff2');
+      }
+      @font-face {
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 600;
+        src: local('Montserrat SemiBold'), url('/fonts/Montserrat-SemiBold.woff2') format('woff2');
+      }
+      @font-face {
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 700;
+        src: local('Montserrat Bold'), url('/fonts/Montserrat-Bold.woff2') format('woff2');
+      }
+      @font-face {
+        font-family: 'JetBrains Mono';
+        font-style: normal;
+        font-weight: 400;
+        src: local('JetBrains Mono Regular'), url('/fonts/JetBrainsMono-Regular.woff2') format('woff2');
+      }
+      @font-face {
+        font-family: 'JetBrains Mono';
+        font-style: normal;
+        font-weight: 500;
+        src: local('JetBrains Mono Medium'), url('/fonts/JetBrainsMono-Medium.woff2') format('woff2');
+      }
+    </style>
+    <title>RouteFlow — Tourenplaner für Lieferfahrten</title>
   </head>
   <body>
     <div id="root"></div>

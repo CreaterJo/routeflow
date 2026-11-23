@@ -1,21 +1,47 @@
 {
-  "name": "RouteFlow",
+  "name": "RouteFlow — Tourenplaner",
   "short_name": "RouteFlow",
-  "description": "Optimiere deine Lieferfahrten",
-  "start_url": "/",
+  "description": "Dein smarter Tourenplaner für Lieferfahrten. Einmal Startadresse eingeben, Adressen hochladen oder tippen, optimierte Route mit Karte sehen.",
+  "start_url": "/?source=pwa",
   "display": "standalone",
+  "orientation": "portrait-primary",
   "background_color": "#ffffff",
-  "theme_color": "#2563eb",
+  "theme_color": "#071437",
+  "scope": "/",
+  "lang": "de",
+  "dir": "ltr",
+  "categories": ["productivity", "business", "navigation"],
   "icons": [
     {
       "src": "/pwa-192x192.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     },
     {
       "src": "/pwa-512x512.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
-  ]
+  ],
+  "screenshots": [],
+  "shortcuts": [
+    {
+      "name": "Neue Tour planen",
+      "short_name": "Neue Tour",
+      "description": "Starte eine neue Liefertour",
+      "url": "/?new=tour",
+      "icons": [{ "src": "/pwa-192x192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Meine Statistiken",
+      "short_name": "Statistiken",
+      "description": "Sieh deine Liefer-Statistiken",
+      "url": "/?view=stats",
+      "icons": [{ "src": "/pwa-192x192.png", "sizes": "192x192" }]
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
 }

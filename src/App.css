@@ -1,201 +1,169 @@
-* {
-  box-sizing: border-box;
+/* App.jspezifische Styles für RouteFlow */
+
+/* Spinner */
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--color-border);
+  border-top-color: var(--color-primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: var(--space-4) auto;
 }
 
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  background: #f8fafc;
-  color: #1e293b;
+@keyframes spin {
+  to { transform: rotate(360deg); }
 }
 
-.app {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Header */
-.header {
-  background: #2563eb;
-  color: white;
-  padding: 20px 24px;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-
-.header h1 {
-  color: white;
-  font-size: 1.8rem;
-  margin: 0;
-}
-
-.badge {
-  padding: 4px 12px;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  background: rgba(255,255,255,0.2);
-}
-
-.badge.mode-local { background: #10b981; }
-.badge.mode-cloud { background: #f59e0b; }
-
-.mode-toggle {
-  margin-left: auto;
-  padding: 8px 16px;
-  background: rgba(255,255,255,0.15);
-  color: white;
-  border: 1px solid rgba(255,255,255,0.3);
-  border-radius: 8px;
-  font-size: 0.85rem;
-  cursor: pointer;
-}
-
-.mode-toggle:hover { background: rgba(255,255,255,0.25); }
-
-/* Main */
-.main {
-  flex: 1;
-  max-width: 700px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 24px 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-/* Cards */
-.card {
-  background: white;
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-}
-
-.card h2 {
-  margin-top: 0;
-  font-size: 1.1rem;
-  color: #334155;
-}
-
-.input-row {
-  display: flex;
-  gap: 10px;
-}
-
-.input-row input {
-  flex: 1;
-  padding: 10px 12px;
-  border: 1px solid #e2e8f0;
-  border-radius: 8px;
-  font-size: 1rem;
-}
-
-.input-row input:focus {
-  outline: none;
-  border-color: #2563eb;
-  box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
-}
-
-/* Buttons */
-.btn-primary {
-  padding: 14px 24px;
-  background: #2563eb;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-
-.btn-primary:hover:not(:disabled) { background: #1d4ed8; }
-.btn-primary:disabled { background: #94a3b8; cursor: not-allowed; }
-
-/* Messages */
-.success { color: #16a34a; font-size: 0.9rem; margin-top: 8px; }
-.error { color: #dc2626; font-size: 0.9rem; padding: 12px; background: #fef2f2; border-radius: 8px; }
-
-/* Result */
-.result .stats-row {
-  display: flex;
-  gap: 24px;
-  margin: 16px 0;
-}
-
-.result .stat {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.result .stat-value {
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: #2563eb;
-}
-
-.result .stat-label {
-  font-size: 0.8rem;
-  color: #64748b;
-}
-
-/* Map */
-.map-container {
-  border-radius: 8px;
+/* Fortschrittsbalken */
+.progress-bar {
+  height: 6px;
+  background: var(--color-bg-alt);
+  border-radius: var(--radius-full);
   overflow: hidden;
-  margin: 16px 0;
-  border: 1px solid #e2e8f0;
 }
 
-/* Stats */
-.stats-grid {
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+  border-radius: var(--radius-full);
+  transition: width 0.4s ease;
+}
+
+/* Wizard Actions */
+.wizard-actions {
   display: flex;
-  gap: 16px;
+  gap: var(--space-3);
+  justify-content: flex-end;
+  margin-top: var(--space-6);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border);
 }
 
-.stat-card {
+/* Error Card */
+.error-card {
+  background: var(--color-error-bg);
+  border: 1px solid var(--color-error);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+}
+
+.error-card__icon {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.error-card__content {
   flex: 1;
-  background: #f8fafc;
-  border-radius: 10px;
-  padding: 20px;
+}
+
+.error-card__title {
+  font-weight: var(--font-semibold);
+  color: var(--color-error);
+  margin-bottom: var(--space-1);
+}
+
+.error-card__message {
+  font-size: var(--text-sm);
+  color: var(--color-text);
+}
+
+/* Upload Zone */
+.upload-zone {
+  border: 2px dashed var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-8);
   text-align: center;
-}
-
-.stat-big {
-  display: block;
-  font-size: 2.2rem;
-  font-weight: 700;
-  color: #2563eb;
-}
-
-.stat-small {
-  display: block;
-  font-size: 0.85rem;
-  color: #64748b;
-  margin-top: 4px;
-}
-
-/* Footer */
-.footer {
-  text-align: center;
-  padding: 20px;
-  color: #94a3b8;
-  font-size: 0.85rem;
-}
-
-/* File input */
-input[type="file"] {
-  padding: 8px;
-  border: 2px dashed #e2e8f0;
-  border-radius: 8px;
-  width: 100%;
   cursor: pointer;
+  transition: all 0.2s ease;
+  background: var(--color-surface);
 }
 
-input[type="file"]:hover { border-color: #2563eb; }
+.upload-zone:hover,
+.upload-zone--dragover {
+  border-color: var(--color-primary);
+  background: var(--color-primary-lighter);
+}
+
+.upload-zone__icon {
+  margin: 0 auto var(--space-3);
+  opacity: 0.6;
+}
+
+.upload-zone__title {
+  font-weight: var(--font-semibold);
+  color: var(--color-text);
+  margin-bottom: var(--space-1);
+}
+
+.upload-zone__hint {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+/* Stats Row */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+}
+
+/* Tour Order List */
+.tour-order-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.tour-order-list__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) var(--space-3);
+  background: var(--color-bg-alt);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+}
+
+.tour-order-list__item--start {
+  background: var(--color-primary-lighter);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.tour-order-list__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: white;
+  font-size: var(--text-sm);
+  font-weight: var(--font-bold);
+  flex-shrink: 0;
+}
+
+.tour-order-list__badge--secondary {
+  background: var(--color-secondary);
+}
+
+.tour-order-list__address {
+  flex: 1;
+  font-size: var(--text-sm);
+}
+
+.tour-order-list__eta {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  margin-left: auto;
+}

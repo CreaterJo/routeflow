@@ -1,0 +1,71 @@
+/* AddressList Styles */
+.address-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.address-list__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-xs);
+  transition: box-shadow var(--transition-fast);
+}
+
+.address-list__item:hover {
+  box-shadow: var(--shadow-sm);
+}
+
+.address-list__number {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--color-primary-lighter);
+  color: var(--color-primary-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--text-xs);
+  font-weight: var(--font-bold);
+  flex-shrink: 0;
+}
+
+.address-list__address {
+  flex: 1;
+  font-size: var(--text-sm);
+  color: var(--color-text);
+}
+
+.address-list__status {
+  flex-shrink: 0;
+}
+
+.address-list__remove {
+  background: none;
+  border: none;
+  padding: var(--space-1);
+  cursor: pointer;
+  color: var(--color-text-light);
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+}
+
+.address-list__remove:hover {
+  color: var(--color-error);
+  background: var(--color-error-light);
+}
+
+.address-list__empty {
+  text-align: center;
+  padding: var(--space-6) 0;
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}

@@ -1,0 +1,497 @@
+{
+  "nodes": [
+    {
+      "id": "src_app",
+      "label": "App.jsx",
+      "file_type": "code",
+      "source_file": "src/App.jsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_app_app",
+      "label": "App()",
+      "file_type": "code",
+      "source_file": "src/App.jsx",
+      "source_location": "L23"
+    },
+    {
+      "id": "lib_routing",
+      "label": "routing.js",
+      "file_type": "code",
+      "source_file": "src/lib/routing.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "lib_routing_parseexcel",
+      "label": "parseExcel()",
+      "file_type": "code",
+      "source_file": "src/lib/routing.js",
+      "source_location": "L13"
+    },
+    {
+      "id": "lib_routing_parsevariantb",
+      "label": "parseVariantB()",
+      "file_type": "code",
+      "source_file": "src/lib/routing.js",
+      "source_location": "L42"
+    },
+    {
+      "id": "lib_routing_parsevarianta",
+      "label": "parseVariantA()",
+      "file_type": "code",
+      "source_file": "src/lib/routing.js",
+      "source_location": "L60"
+    },
+    {
+      "id": "lib_routing_geocode",
+      "label": "geocode()",
+      "file_type": "code",
+      "source_file": "src/lib/routing.js",
+      "source_location": "L89"
+    },
+    {
+      "id": "lib_routing_getroute",
+      "label": "getRoute()",
+      "file_type": "code",
+      "source_file": "src/lib/routing.js",
+      "source_location": "L113"
+    },
+    {
+      "id": "lib_routing_nearestneighbor2opt",
+      "label": "nearestNeighbor2Opt()",
+      "file_type": "code",
+      "source_file": "src/lib/routing.js",
+      "source_location": "L138"
+    },
+    {
+      "id": "lib_routing_haversine",
+      "label": "haversine()",
+      "file_type": "code",
+      "source_file": "src/lib/routing.js",
+      "source_location": "L187"
+    },
+    {
+      "id": "lib_routing_torad",
+      "label": "toRad()",
+      "file_type": "code",
+      "source_file": "src/lib/routing.js",
+      "source_location": "L198"
+    },
+    {
+      "id": "lib_routing_edgedist",
+      "label": "edgeDist()",
+      "file_type": "code",
+      "source_file": "src/lib/routing.js",
+      "source_location": "L202"
+    },
+    {
+      "id": "lib_routing_storage",
+      "label": "storage",
+      "file_type": "code",
+      "source_file": "src/lib/routing.js",
+      "source_location": "L211"
+    },
+    {
+      "id": "lib_supabase",
+      "label": "supabase.js",
+      "file_type": "code",
+      "source_file": "src/lib/supabase.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "lib_supabase_supabase",
+      "label": "supabase",
+      "file_type": "code",
+      "source_file": "src/lib/supabase.js",
+      "source_location": "L10"
+    },
+    {
+      "id": "src_main",
+      "label": "main.jsx",
+      "file_type": "code",
+      "source_file": "src/main.jsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "vite_config",
+      "label": "vite.config.js",
+      "file_type": "code",
+      "source_file": "vite.config.js",
+      "source_location": "L1"
+    }
+  ],
+  "edges": [
+    {
+      "source": "src_app",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.jsx",
+      "source_location": "L1",
+      "weight": 1
+    },
+    {
+      "source": "src_app",
+      "target": "react_leaflet",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.jsx",
+      "source_location": "L2",
+      "weight": 1
+    },
+    {
+      "source": "src_app",
+      "target": "leaflet",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.jsx",
+      "source_location": "L3",
+      "weight": 1
+    },
+    {
+      "source": "src_app",
+      "target": "leaflet_css",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.jsx",
+      "source_location": "L4",
+      "weight": 1
+    },
+    {
+      "source": "src_app",
+      "target": "lib_routing",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.jsx",
+      "source_location": "L5",
+      "weight": 1
+    },
+    {
+      "source": "src_app",
+      "target": "lib_routing_parseexcel",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.jsx",
+      "source_location": "L5",
+      "weight": 1
+    },
+    {
+      "source": "src_app",
+      "target": "lib_routing_geocode",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.jsx",
+      "source_location": "L5",
+      "weight": 1
+    },
+    {
+      "source": "src_app",
+      "target": "lib_routing_getroute",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.jsx",
+      "source_location": "L5",
+      "weight": 1
+    },
+    {
+      "source": "src_app",
+      "target": "lib_routing_nearestneighbor2opt",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.jsx",
+      "source_location": "L5",
+      "weight": 1
+    },
+    {
+      "source": "src_app",
+      "target": "lib_routing_storage",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.jsx",
+      "source_location": "L5",
+      "weight": 1
+    },
+    {
+      "source": "src_app",
+      "target": "c_jakob_vsc_routeflow_src_app_css",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.jsx",
+      "source_location": "L6",
+      "weight": 1
+    },
+    {
+      "source": "src_app",
+      "target": "marker_icon_png",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.jsx",
+      "source_location": "L9",
+      "weight": 1
+    },
+    {
+      "source": "src_app",
+      "target": "marker_icon_2x_png",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.jsx",
+      "source_location": "L10",
+      "weight": 1
+    },
+    {
+      "source": "src_app",
+      "target": "marker_shadow_png",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.jsx",
+      "source_location": "L11",
+      "weight": 1
+    },
+    {
+      "source": "src_app",
+      "target": "src_app_app",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.jsx",
+      "source_location": "L23",
+      "weight": 1
+    },
+    {
+      "source": "lib_routing",
+      "target": "xlsx",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/routing.js",
+      "source_location": "L7",
+      "weight": 1
+    },
+    {
+      "source": "lib_routing",
+      "target": "lib_routing_parseexcel",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/routing.js",
+      "source_location": "L13",
+      "weight": 1
+    },
+    {
+      "source": "lib_routing",
+      "target": "lib_routing_parsevariantb",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/routing.js",
+      "source_location": "L42",
+      "weight": 1
+    },
+    {
+      "source": "lib_routing",
+      "target": "lib_routing_parsevarianta",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/routing.js",
+      "source_location": "L60",
+      "weight": 1
+    },
+    {
+      "source": "lib_routing",
+      "target": "lib_routing_geocode",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/routing.js",
+      "source_location": "L89",
+      "weight": 1
+    },
+    {
+      "source": "lib_routing",
+      "target": "lib_routing_getroute",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/routing.js",
+      "source_location": "L113",
+      "weight": 1
+    },
+    {
+      "source": "lib_routing",
+      "target": "lib_routing_nearestneighbor2opt",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/routing.js",
+      "source_location": "L138",
+      "weight": 1
+    },
+    {
+      "source": "lib_routing",
+      "target": "lib_routing_haversine",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/routing.js",
+      "source_location": "L187",
+      "weight": 1
+    },
+    {
+      "source": "lib_routing",
+      "target": "lib_routing_torad",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/routing.js",
+      "source_location": "L198",
+      "weight": 1
+    },
+    {
+      "source": "lib_routing",
+      "target": "lib_routing_edgedist",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/routing.js",
+      "source_location": "L202",
+      "weight": 1
+    },
+    {
+      "source": "lib_routing",
+      "target": "lib_routing_storage",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/routing.js",
+      "source_location": "L211",
+      "weight": 1
+    },
+    {
+      "source": "lib_routing_parseexcel",
+      "target": "lib_routing_parsevariantb",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/routing.js",
+      "source_location": "L31",
+      "weight": 1
+    },
+    {
+      "source": "lib_routing_parseexcel",
+      "target": "lib_routing_parsevarianta",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/routing.js",
+      "source_location": "L36",
+      "weight": 1
+    },
+    {
+      "source": "lib_routing_nearestneighbor2opt",
+      "target": "lib_routing_haversine",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/routing.js",
+      "source_location": "L154",
+      "weight": 1
+    },
+    {
+      "source": "lib_routing_nearestneighbor2opt",
+      "target": "lib_routing_edgedist",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/routing.js",
+      "source_location": "L172",
+      "weight": 1
+    },
+    {
+      "source": "lib_routing_haversine",
+      "target": "lib_routing_torad",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/routing.js",
+      "source_location": "L189",
+      "weight": 1
+    },
+    {
+      "source": "lib_routing_edgedist",
+      "target": "lib_routing_haversine",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/routing.js",
+      "source_location": "L205",
+      "weight": 1
+    },
+    {
+      "source": "lib_supabase",
+      "target": "supabase_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/supabase.js",
+      "source_location": "L1",
+      "weight": 1
+    },
+    {
+      "source": "lib_supabase",
+      "target": "lib_supabase_supabase",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/supabase.js",
+      "source_location": "L10",
+      "weight": 1
+    },
+    {
+      "source": "src_main",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/main.jsx",
+      "source_location": "L1",
+      "weight": 1
+    },
+    {
+      "source": "src_main",
+      "target": "client",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/main.jsx",
+      "source_location": "L2",
+      "weight": 1
+    },
+    {
+      "source": "src_main",
+      "target": "c_jakob_vsc_routeflow_src_index_css",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/main.jsx",
+      "source_location": "L3",
+      "weight": 1
+    },
+    {
+      "source": "src_main",
+      "target": "c_jakob_vsc_routeflow_src_app_tsx",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/main.jsx",
+      "source_location": "L4",
+      "weight": 1
+    },
+    {
+      "source": "vite_config",
+      "target": "vite",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "vite.config.js",
+      "source_location": "L1",
+      "weight": 1
+    },
+    {
+      "source": "vite_config",
+      "target": "plugin_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "vite.config.js",
+      "source_location": "L2",
+      "weight": 1
+    },
+    {
+      "source": "vite_config",
+      "target": "vite_plugin_pwa",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "vite.config.js",
+      "source_location": "L3",
+      "weight": 1
+    }
+  ],
+  "input_tokens": 0,
+  "output_tokens": 0,
+  "hyperedges": []
+}

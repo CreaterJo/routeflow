@@ -1,0 +1,857 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {
+    "community_labels": {},
+    "built_from_commit": "2d1c686fa3e90cbdef3ddfabfb5dfe9ac759d212"
+  },
+  "topology_signature": "n=27;e=35;C:/Jakob/VSC/RouteFlow/README.md,C:/Jakob/VSC/RouteFlow/SUPABASE-SETUP.md,C:/Jakob/VSC/RouteFlow/index.html,C:/Jakob/VSC/RouteFlow/package.json,C:/Jakob/VSC/RouteFlow/src/App.jsx,C:/Jakob/VSC/RouteFlow/src/lib/routing.js,C:/Jakob/VSC/RouteFlow/src/lib/supabase.js,C:/Jakob/VSC/RouteFlow/src/main.jsx,C:/Jakob/VSC/RouteFlow/vite.config.js,lib_routing,lib_routing_edgedist,lib_routing_geocode,lib_routing_getroute,lib_routing_haversine,lib_routing_nearestneighbor2opt,lib_routing_parseexcel,lib_routing_parsevarianta,lib_routing_parsevariantb,lib_routing_storage,lib_routing_torad,lib_supabase,lib_supabase_supabase,src_app,src_app_app,src_main,vault:Liefern.md,vite_config|C:/Jakob/VSC/RouteFlow/SUPABASE-SETUP.md\tC:/Jakob/VSC/RouteFlow/src/lib/supabase.js\tdocuments;C:/Jakob/VSC/RouteFlow/SUPABASE-SETUP.md\tvault:Liefern.md\treferences;C:/Jakob/VSC/RouteFlow/index.html\tC:/Jakob/VSC/RouteFlow/src/main.jsx\tbootstraps;C:/Jakob/VSC/RouteFlow/index.html\tC:/Jakob/VSC/RouteFlow/vite.config.js\tserved_by;C:/Jakob/VSC/RouteFlow/package.json\tC:/Jakob/VSC/RouteFlow/src/lib/routing.js\tdepends_on;C:/Jakob/VSC/RouteFlow/src/App.jsx\tC:/Jakob/VSC/RouteFlow/src/lib/routing.js\timports;C:/Jakob/VSC/RouteFlow/src/App.jsx\tC:/Jakob/VSC/RouteFlow/src/lib/supabase.js\timports;C:/Jakob/VSC/RouteFlow/src/App.jsx\tC:/Jakob/VSC/RouteFlow/src/main.jsx\trenders;C:/Jakob/VSC/RouteFlow/src/App.jsx\tC:/Jakob/VSC/RouteFlow/vite.config.js\tconfigured_by;C:/Jakob/VSC/RouteFlow/src/App.jsx\tvault:Liefern.md\tdescribes;C:/Jakob/VSC/RouteFlow/src/lib/routing.js\tvault:Liefern.md\tdescribes;lib_routing\tlib_routing_edgedist\tcontains;lib_routing\tlib_routing_geocode\tcontains;lib_routing\tlib_routing_getroute\tcontains;lib_routing\tlib_routing_haversine\tcontains;lib_routing\tlib_routing_nearestneighbor2opt\tcontains;lib_routing\tlib_routing_parseexcel\tcontains;lib_routing\tlib_routing_parsevarianta\tcontains;lib_routing\tlib_routing_parsevariantb\tcontains;lib_routing\tlib_routing_storage\tcontains;lib_routing\tlib_routing_torad\tcontains;lib_routing\tsrc_app\timports_from;lib_routing_edgedist\tlib_routing_haversine\tcalls;lib_routing_edgedist\tlib_routing_nearestneighbor2opt\tcalls;lib_routing_geocode\tsrc_app\timports;lib_routing_getroute\tsrc_app\timports;lib_routing_haversine\tlib_routing_nearestneighbor2opt\tcalls;lib_routing_haversine\tlib_routing_torad\tcalls;lib_routing_nearestneighbor2opt\tsrc_app\timports;lib_routing_parseexcel\tlib_routing_parsevarianta\tcalls;lib_routing_parseexcel\tlib_routing_parsevariantb\tcalls;lib_routing_parseexcel\tsrc_app\timports;lib_routing_storage\tsrc_app\timports;lib_supabase\tlib_supabase_supabase\tcontains;src_app\tsrc_app_app\tcontains",
+  "nodes": [
+    {
+      "id": "src_app",
+      "label": "App.jsx",
+      "file_type": "code",
+      "source_file": "src/App.jsx",
+      "source_location": "L1",
+      "description": "Hauptkomponente der React-App. Enthält State-Management (addresses, loading, map bounds), Excel-Upload-Handler, Geocoding- und Routing-Aufrufe, Leaflet-Karte mit Markern/Polyline, Bestell-Liste und Statistik-Anzeige. Startet über lib/routing.js und lib/supabase.js.",
+      "type": "component",
+      "tags": [
+        "frontend",
+        "react",
+        "app"
+      ],
+      "community": null,
+      "community_name": null
+    },
+    {
+      "id": "src_app_app",
+      "label": "App()",
+      "file_type": "code",
+      "source_file": "src/App.jsx",
+      "source_location": "L23",
+      "description": "Hauptkomponente der React-App. Enthält State-Management (addresses, loading, map bounds), Excel-Upload-Handler, Geocoding- und Routing-Aufrufe, Leaflet-Karte mit Markern/Polyline, Bestell-Liste und Statistik-Anzeige. Startet über lib/routing.js und lib/supabase.js.",
+      "type": "component",
+      "tags": [
+        "frontend",
+        "react",
+        "app"
+      ],
+      "community": null,
+      "community_name": null
+    },
+    {
+      "id": "lib_routing",
+      "label": "routing.js",
+      "file_type": "code",
+      "source_file": "src/lib/routing.js",
+      "source_location": "L1",
+      "description": "Kern-Logik-Modul. ParseExcel (Variant A: PLZ+Ort+Adresse, B: PLZ/Ort/Straße getrennt), Geocoding via Nominatim API (UA: RouteFlow/1.0), Routing via OSRM Public API, TSP-Optimierung mit Nearest-Neighbor + 2-Opt Heuristik, haversine distance, localStorage storage wrapper.",
+      "type": "library",
+      "tags": [
+        "routing",
+        "tsp",
+        "excel",
+        "geocoding",
+        "algorithm"
+      ],
+      "community": null,
+      "community_name": null
+    },
+    {
+      "id": "lib_routing_parseexcel",
+      "label": "parseExcel()",
+      "file_type": "code",
+      "source_file": "src/lib/routing.js",
+      "source_location": "L13",
+      "description": "Kern-Logik-Modul. ParseExcel (Variant A: PLZ+Ort+Adresse, B: PLZ/Ort/Straße getrennt), Geocoding via Nominatim API (UA: RouteFlow/1.0), Routing via OSRM Public API, TSP-Optimierung mit Nearest-Neighbor + 2-Opt Heuristik, haversine distance, localStorage storage wrapper.",
+      "type": "library",
+      "tags": [
+        "routing",
+        "tsp",
+        "excel",
+        "geocoding",
+        "algorithm"
+      ],
+      "community": null,
+      "community_name": null
+    },
+    {
+      "id": "lib_routing_parsevariantb",
+      "label": "parseVariantB()",
+      "file_type": "code",
+      "source_file": "src/lib/routing.js",
+      "source_location": "L42",
+      "description": "Kern-Logik-Modul. ParseExcel (Variant A: PLZ+Ort+Adresse, B: PLZ/Ort/Straße getrennt), Geocoding via Nominatim API (UA: RouteFlow/1.0), Routing via OSRM Public API, TSP-Optimierung mit Nearest-Neighbor + 2-Opt Heuristik, haversine distance, localStorage storage wrapper.",
+      "type": "library",
+      "tags": [
+        "routing",
+        "tsp",
+        "excel",
+        "geocoding",
+        "algorithm"
+      ],
+      "community": null,
+      "community_name": null
+    },
+    {
+      "id": "lib_routing_parsevarianta",
+      "label": "parseVariantA()",
+      "file_type": "code",
+      "source_file": "src/lib/routing.js",
+      "source_location": "L60",
+      "description": "Kern-Logik-Modul. ParseExcel (Variant A: PLZ+Ort+Adresse, B: PLZ/Ort/Straße getrennt), Geocoding via Nominatim API (UA: RouteFlow/1.0), Routing via OSRM Public API, TSP-Optimierung mit Nearest-Neighbor + 2-Opt Heuristik, haversine distance, localStorage storage wrapper.",
+      "type": "library",
+      "tags": [
+        "routing",
+        "tsp",
+        "excel",
+        "geocoding",
+        "algorithm"
+      ],
+      "community": null,
+      "community_name": null
+    },
+    {
+      "id": "lib_routing_geocode",
+      "label": "geocode()",
+      "file_type": "code",
+      "source_file": "src/lib/routing.js",
+      "source_location": "L89",
+      "description": "Kern-Logik-Modul. ParseExcel (Variant A: PLZ+Ort+Adresse, B: PLZ/Ort/Straße getrennt), Geocoding via Nominatim API (UA: RouteFlow/1.0), Routing via OSRM Public API, TSP-Optimierung mit Nearest-Neighbor + 2-Opt Heuristik, haversine distance, localStorage storage wrapper.",
+      "type": "library",
+      "tags": [
+        "routing",
+        "tsp",
+        "excel",
+        "geocoding",
+        "algorithm"
+      ],
+      "community": null,
+      "community_name": null
+    },
+    {
+      "id": "lib_routing_getroute",
+      "label": "getRoute()",
+      "file_type": "code",
+      "source_file": "src/lib/routing.js",
+      "source_location": "L113",
+      "description": "Kern-Logik-Modul. ParseExcel (Variant A: PLZ+Ort+Adresse, B: PLZ/Ort/Straße getrennt), Geocoding via Nominatim API (UA: RouteFlow/1.0), Routing via OSRM Public API, TSP-Optimierung mit Nearest-Neighbor + 2-Opt Heuristik, haversine distance, localStorage storage wrapper.",
+      "type": "library",
+      "tags": [
+        "routing",
+        "tsp",
+        "excel",
+        "geocoding",
+        "algorithm"
+      ],
+      "community": null,
+      "community_name": null
+    },
+    {
+      "id": "lib_routing_nearestneighbor2opt",
+      "label": "nearestNeighbor2Opt()",
+      "file_type": "code",
+      "source_file": "src/lib/routing.js",
+      "source_location": "L138",
+      "description": "Kern-Logik-Modul. ParseExcel (Variant A: PLZ+Ort+Adresse, B: PLZ/Ort/Straße getrennt), Geocoding via Nominatim API (UA: RouteFlow/1.0), Routing via OSRM Public API, TSP-Optimierung mit Nearest-Neighbor + 2-Opt Heuristik, haversine distance, localStorage storage wrapper.",
+      "type": "library",
+      "tags": [
+        "routing",
+        "tsp",
+        "excel",
+        "geocoding",
+        "algorithm"
+      ],
+      "community": null,
+      "community_name": null
+    },
+    {
+      "id": "lib_routing_haversine",
+      "label": "haversine()",
+      "file_type": "code",
+      "source_file": "src/lib/routing.js",
+      "source_location": "L187",
+      "description": "Kern-Logik-Modul. ParseExcel (Variant A: PLZ+Ort+Adresse, B: PLZ/Ort/Straße getrennt), Geocoding via Nominatim API (UA: RouteFlow/1.0), Routing via OSRM Public API, TSP-Optimierung mit Nearest-Neighbor + 2-Opt Heuristik, haversine distance, localStorage storage wrapper.",
+      "type": "library",
+      "tags": [
+        "routing",
+        "tsp",
+        "excel",
+        "geocoding",
+        "algorithm"
+      ],
+      "community": null,
+      "community_name": null
+    },
+    {
+      "id": "lib_routing_torad",
+      "label": "toRad()",
+      "file_type": "code",
+      "source_file": "src/lib/routing.js",
+      "source_location": "L198",
+      "description": "Kern-Logik-Modul. ParseExcel (Variant A: PLZ+Ort+Adresse, B: PLZ/Ort/Straße getrennt), Geocoding via Nominatim API (UA: RouteFlow/1.0), Routing via OSRM Public API, TSP-Optimierung mit Nearest-Neighbor + 2-Opt Heuristik, haversine distance, localStorage storage wrapper.",
+      "type": "library",
+      "tags": [
+        "routing",
+        "tsp",
+        "excel",
+        "geocoding",
+        "algorithm"
+      ],
+      "community": null,
+      "community_name": null
+    },
+    {
+      "id": "lib_routing_edgedist",
+      "label": "edgeDist()",
+      "file_type": "code",
+      "source_file": "src/lib/routing.js",
+      "source_location": "L202",
+      "description": "Kern-Logik-Modul. ParseExcel (Variant A: PLZ+Ort+Adresse, B: PLZ/Ort/Straße getrennt), Geocoding via Nominatim API (UA: RouteFlow/1.0), Routing via OSRM Public API, TSP-Optimierung mit Nearest-Neighbor + 2-Opt Heuristik, haversine distance, localStorage storage wrapper.",
+      "type": "library",
+      "tags": [
+        "routing",
+        "tsp",
+        "excel",
+        "geocoding",
+        "algorithm"
+      ],
+      "community": null,
+      "community_name": null
+    },
+    {
+      "id": "lib_routing_storage",
+      "label": "storage",
+      "file_type": "code",
+      "source_file": "src/lib/routing.js",
+      "source_location": "L211",
+      "description": "Kern-Logik-Modul. ParseExcel (Variant A: PLZ+Ort+Adresse, B: PLZ/Ort/Straße getrennt), Geocoding via Nominatim API (UA: RouteFlow/1.0), Routing via OSRM Public API, TSP-Optimierung mit Nearest-Neighbor + 2-Opt Heuristik, haversine distance, localStorage storage wrapper.",
+      "type": "library",
+      "tags": [
+        "routing",
+        "tsp",
+        "excel",
+        "geocoding",
+        "algorithm"
+      ],
+      "community": null,
+      "community_name": null
+    },
+    {
+      "id": "lib_supabase",
+      "label": "supabase.js",
+      "file_type": "code",
+      "source_file": "src/lib/supabase.js",
+      "source_location": "L1",
+      "description": "Supabase-Client-Initialisierung. Readet VITE_SUPABASE_URL und VITE_SUPABASE_ANON_KEY aus env, wirft wenn fehlen. Bietet createClient für Cloud-Backend (users/tours/stats Tabellen mit RLS).",
+      "type": "library",
+      "tags": [
+        "supabase",
+        "backend",
+        "cloud"
+      ],
+      "community": null,
+      "community_name": null
+    },
+    {
+      "id": "lib_supabase_supabase",
+      "label": "supabase",
+      "file_type": "code",
+      "source_file": "src/lib/supabase.js",
+      "source_location": "L10",
+      "description": "Supabase-Client-Initialisierung. Readet VITE_SUPABASE_URL und VITE_SUPABASE_ANON_KEY aus env, wirft wenn fehlen. Bietet createClient für Cloud-Backend (users/tours/stats Tabellen mit RLS).",
+      "type": "library",
+      "tags": [
+        "supabase",
+        "backend",
+        "cloud"
+      ],
+      "community": null,
+      "community_name": null
+    },
+    {
+      "id": "src_main",
+      "label": "main.jsx",
+      "file_type": "code",
+      "source_file": "src/main.jsx",
+      "source_location": "L1",
+      "description": "Entry Point der React-App. Rendert App Komponente ins DOM über ReactDOM.createRoot.",
+      "type": "entrypoint",
+      "tags": [
+        "react",
+        "entrypoint"
+      ],
+      "community": null,
+      "community_name": null
+    },
+    {
+      "id": "vite_config",
+      "label": "vite.config.js",
+      "file_type": "code",
+      "source_file": "vite.config.js",
+      "source_location": "L1",
+      "description": "Vite-Konfiguration mit Workbox Service Worker Plugin für PWA-Unterstützung (Offline, Installierbarkeit).",
+      "type": "config",
+      "tags": [
+        "vite",
+        "pwa",
+        "workbox",
+        "service-worker"
+      ],
+      "community": null,
+      "community_name": null
+    },
+    {
+      "id": "C:/Jakob/VSC/RouteFlow/src/App.jsx",
+      "description": "Hauptkomponente der React-App. Enthält State-Management (addresses, loading, map bounds), Excel-Upload-Handler, Geocoding- und Routing-Aufrufe, Leaflet-Karte mit Markern/Polyline, Bestell-Liste und Statistik-Anzeige. Startet über lib/routing.js und lib/supabase.js.",
+      "type": "component",
+      "tags": [
+        "frontend",
+        "react",
+        "app"
+      ],
+      "label": "App.jsx",
+      "file_type": "code",
+      "source_file": "C:/Jakob/VSC/RouteFlow/src/App.jsx",
+      "community": null,
+      "community_name": null
+    },
+    {
+      "id": "C:/Jakob/VSC/RouteFlow/src/lib/routing.js",
+      "description": "Kern-Logik-Modul. ParseExcel (Variant A: PLZ+Ort+Adresse, B: PLZ/Ort/Straße getrennt), Geocoding via Nominatim API (UA: RouteFlow/1.0), Routing via OSRM Public API, TSP-Optimierung mit Nearest-Neighbor + 2-Opt Heuristik, haversine distance, localStorage storage wrapper.",
+      "type": "library",
+      "tags": [
+        "routing",
+        "tsp",
+        "excel",
+        "geocoding",
+        "algorithm"
+      ],
+      "label": "routing.js",
+      "file_type": "code",
+      "source_file": "C:/Jakob/VSC/RouteFlow/src/lib/routing.js",
+      "community": null,
+      "community_name": null
+    },
+    {
+      "id": "C:/Jakob/VSC/RouteFlow/src/lib/supabase.js",
+      "description": "Supabase-Client-Initialisierung. Readet VITE_SUPABASE_URL und VITE_SUPABASE_ANON_KEY aus env, wirft wenn fehlen. Bietet createClient für Cloud-Backend (users/tours/stats Tabellen mit RLS).",
+      "type": "library",
+      "tags": [
+        "supabase",
+        "backend",
+        "cloud"
+      ],
+      "label": "supabase.js",
+      "file_type": "code",
+      "source_file": "C:/Jakob/VSC/RouteFlow/src/lib/supabase.js",
+      "community": null,
+      "community_name": null
+    },
+    {
+      "id": "C:/Jakob/VSC/RouteFlow/src/main.jsx",
+      "description": "Entry Point der React-App. Rendert App Komponente ins DOM über ReactDOM.createRoot.",
+      "type": "entrypoint",
+      "tags": [
+        "react",
+        "entrypoint"
+      ],
+      "label": "main.jsx",
+      "file_type": "code",
+      "source_file": "C:/Jakob/VSC/RouteFlow/src/main.jsx",
+      "community": null,
+      "community_name": null
+    },
+    {
+      "id": "C:/Jakob/VSC/RouteFlow/vite.config.js",
+      "description": "Vite-Konfiguration mit Workbox Service Worker Plugin für PWA-Unterstützung (Offline, Installierbarkeit).",
+      "type": "config",
+      "tags": [
+        "vite",
+        "pwa",
+        "workbox",
+        "service-worker"
+      ],
+      "label": "vite.config.js",
+      "file_type": "code",
+      "source_file": "C:/Jakob/VSC/RouteFlow/vite.config.js",
+      "community": null,
+      "community_name": null
+    },
+    {
+      "id": "C:/Jakob/VSC/RouteFlow/index.html",
+      "description": "HTML-Shell mit Titel 'RouteFlow — Tourenplaner', Manifest-Referenz für PWA, Service-Worker-Registration.",
+      "type": "document",
+      "tags": [
+        "html",
+        "pwa",
+        "manifest"
+      ],
+      "label": "index.html",
+      "file_type": "document",
+      "source_file": "C:/Jakob/VSC/RouteFlow/index.html",
+      "community": null,
+      "community_name": null
+    },
+    {
+      "id": "C:/Jakob/VSC/RouteFlow/README.md",
+      "description": "Standard-Vite-Templat README — keine spezifische RouteFlow-Dokumentation. Echt-Doku liegt in Obsidian Vault (02 Projekte/Liefern.md).",
+      "type": "document",
+      "tags": [
+        "readme",
+        "docs"
+      ],
+      "label": "README.md",
+      "file_type": "document",
+      "source_file": "C:/Jakob/VSC/RouteFlow/README.md",
+      "community": null,
+      "community_name": null
+    },
+    {
+      "id": "C:/Jakob/VSC/RouteFlow/SUPABASE-SETUP.md",
+      "description": "SQL-Schema-Dokumentation für Supabase: Tabellen users/tours/stats, RLS-Policies, Insert-Trigger, URL und publishable anon key.",
+      "type": "document",
+      "tags": [
+        "supabase",
+        "sql",
+        "schema",
+        "setup"
+      ],
+      "label": "SUPABASE-SETUP.md",
+      "file_type": "document",
+      "source_file": "C:/Jakob/VSC/RouteFlow/SUPABASE-SETUP.md",
+      "community": null,
+      "community_name": null
+    },
+    {
+      "id": "C:/Jakob/VSC/RouteFlow/package.json",
+      "description": "Projekt-Metadaten: React 19, Vite, react-leaflet, leaflet, @supabase/supabase-js, xlsx (SheetJS), workbox-window. Scripts: dev, build, preview.",
+      "type": "config",
+      "tags": [
+        "dependencies",
+        "package"
+      ],
+      "label": "package.json",
+      "file_type": "document",
+      "source_file": "C:/Jakob/VSC/RouteFlow/package.json",
+      "community": null,
+      "community_name": null
+    },
+    {
+      "id": "vault:Liefern.md",
+      "description": "Obsidian-Vault-Projekt-Notiz für RouteFlow (C:/Jakob/OBSJ/Jakob/02 Projekte/Liefern.md). Enthält Tech-Stack, Architektur, Features, Datenfluss, Limits, nächste Schritte.",
+      "type": "vault_note",
+      "tags": [
+        "obsidian",
+        "projekt",
+        "doku"
+      ],
+      "label": "Liefern.md",
+      "file_type": "document",
+      "source_file": "vault:Liefern.md",
+      "community": null,
+      "community_name": null
+    }
+  ],
+  "links": [
+    {
+      "source": "C:/Jakob/VSC/RouteFlow/SUPABASE-SETUP.md",
+      "target": "C:/Jakob/VSC/RouteFlow/src/lib/supabase.js",
+      "relation": "documents",
+      "confidence": "INFERRED",
+      "source_file": "ast",
+      "_src": "C:/Jakob/VSC/RouteFlow/SUPABASE-SETUP.md",
+      "_tgt": "C:/Jakob/VSC/RouteFlow/src/lib/supabase.js",
+      "confidence_score": 0.5
+    },
+    {
+      "source": "C:/Jakob/VSC/RouteFlow/index.html",
+      "target": "C:/Jakob/VSC/RouteFlow/src/main.jsx",
+      "relation": "bootstraps",
+      "confidence": "INFERRED",
+      "source_file": "ast",
+      "_src": "C:/Jakob/VSC/RouteFlow/index.html",
+      "_tgt": "C:/Jakob/VSC/RouteFlow/src/main.jsx",
+      "confidence_score": 0.5
+    },
+    {
+      "source": "C:/Jakob/VSC/RouteFlow/index.html",
+      "target": "C:/Jakob/VSC/RouteFlow/vite.config.js",
+      "relation": "served_by",
+      "confidence": "INFERRED",
+      "source_file": "ast",
+      "_src": "C:/Jakob/VSC/RouteFlow/index.html",
+      "_tgt": "C:/Jakob/VSC/RouteFlow/vite.config.js",
+      "confidence_score": 0.5
+    },
+    {
+      "source": "C:/Jakob/VSC/RouteFlow/src/App.jsx",
+      "target": "C:/Jakob/VSC/RouteFlow/src/lib/routing.js",
+      "relation": "imports",
+      "confidence": "INFERRED",
+      "source_file": "ast",
+      "_src": "C:/Jakob/VSC/RouteFlow/src/App.jsx",
+      "_tgt": "C:/Jakob/VSC/RouteFlow/src/lib/routing.js",
+      "confidence_score": 0.5
+    },
+    {
+      "source": "C:/Jakob/VSC/RouteFlow/src/App.jsx",
+      "target": "C:/Jakob/VSC/RouteFlow/src/lib/supabase.js",
+      "relation": "imports",
+      "confidence": "INFERRED",
+      "source_file": "ast",
+      "_src": "C:/Jakob/VSC/RouteFlow/src/App.jsx",
+      "_tgt": "C:/Jakob/VSC/RouteFlow/src/lib/supabase.js",
+      "confidence_score": 0.5
+    },
+    {
+      "source": "C:/Jakob/VSC/RouteFlow/src/App.jsx",
+      "target": "C:/Jakob/VSC/RouteFlow/vite.config.js",
+      "relation": "configured_by",
+      "confidence": "INFERRED",
+      "source_file": "ast",
+      "_src": "C:/Jakob/VSC/RouteFlow/src/App.jsx",
+      "_tgt": "C:/Jakob/VSC/RouteFlow/vite.config.js",
+      "confidence_score": 0.5
+    },
+    {
+      "source": "C:/Jakob/VSC/RouteFlow/src/lib/routing.js",
+      "target": "C:/Jakob/VSC/RouteFlow/package.json",
+      "relation": "depends_on",
+      "confidence": "INFERRED",
+      "source_file": "ast",
+      "_src": "C:/Jakob/VSC/RouteFlow/src/lib/routing.js",
+      "_tgt": "C:/Jakob/VSC/RouteFlow/package.json",
+      "confidence_score": 0.5
+    },
+    {
+      "source": "C:/Jakob/VSC/RouteFlow/src/main.jsx",
+      "target": "C:/Jakob/VSC/RouteFlow/src/App.jsx",
+      "relation": "renders",
+      "confidence": "INFERRED",
+      "source_file": "ast",
+      "_src": "C:/Jakob/VSC/RouteFlow/src/main.jsx",
+      "_tgt": "C:/Jakob/VSC/RouteFlow/src/App.jsx",
+      "confidence_score": 0.5
+    },
+    {
+      "source": "lib_routing",
+      "target": "lib_routing_edgedist",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/routing.js",
+      "source_location": "L202",
+      "weight": 1,
+      "_src": "lib_routing",
+      "_tgt": "lib_routing_edgedist",
+      "confidence_score": 1
+    },
+    {
+      "source": "lib_routing",
+      "target": "lib_routing_geocode",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/routing.js",
+      "source_location": "L89",
+      "weight": 1,
+      "_src": "lib_routing",
+      "_tgt": "lib_routing_geocode",
+      "confidence_score": 1
+    },
+    {
+      "source": "lib_routing",
+      "target": "lib_routing_getroute",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/routing.js",
+      "source_location": "L113",
+      "weight": 1,
+      "_src": "lib_routing",
+      "_tgt": "lib_routing_getroute",
+      "confidence_score": 1
+    },
+    {
+      "source": "lib_routing",
+      "target": "lib_routing_haversine",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/routing.js",
+      "source_location": "L187",
+      "weight": 1,
+      "_src": "lib_routing",
+      "_tgt": "lib_routing_haversine",
+      "confidence_score": 1
+    },
+    {
+      "source": "lib_routing",
+      "target": "lib_routing_nearestneighbor2opt",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/routing.js",
+      "source_location": "L138",
+      "weight": 1,
+      "_src": "lib_routing",
+      "_tgt": "lib_routing_nearestneighbor2opt",
+      "confidence_score": 1
+    },
+    {
+      "source": "lib_routing",
+      "target": "lib_routing_parseexcel",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/routing.js",
+      "source_location": "L13",
+      "weight": 1,
+      "_src": "lib_routing",
+      "_tgt": "lib_routing_parseexcel",
+      "confidence_score": 1
+    },
+    {
+      "source": "lib_routing",
+      "target": "lib_routing_parsevarianta",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/routing.js",
+      "source_location": "L60",
+      "weight": 1,
+      "_src": "lib_routing",
+      "_tgt": "lib_routing_parsevarianta",
+      "confidence_score": 1
+    },
+    {
+      "source": "lib_routing",
+      "target": "lib_routing_parsevariantb",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/routing.js",
+      "source_location": "L42",
+      "weight": 1,
+      "_src": "lib_routing",
+      "_tgt": "lib_routing_parsevariantb",
+      "confidence_score": 1
+    },
+    {
+      "source": "lib_routing",
+      "target": "lib_routing_storage",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/routing.js",
+      "source_location": "L211",
+      "weight": 1,
+      "_src": "lib_routing",
+      "_tgt": "lib_routing_storage",
+      "confidence_score": 1
+    },
+    {
+      "source": "lib_routing",
+      "target": "lib_routing_torad",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/routing.js",
+      "source_location": "L198",
+      "weight": 1,
+      "_src": "lib_routing",
+      "_tgt": "lib_routing_torad",
+      "confidence_score": 1
+    },
+    {
+      "source": "lib_routing_edgedist",
+      "target": "lib_routing_haversine",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/routing.js",
+      "source_location": "L205",
+      "weight": 1,
+      "_src": "lib_routing_edgedist",
+      "_tgt": "lib_routing_haversine",
+      "confidence_score": 1
+    },
+    {
+      "source": "lib_routing_haversine",
+      "target": "lib_routing_torad",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/routing.js",
+      "source_location": "L189",
+      "weight": 1,
+      "_src": "lib_routing_haversine",
+      "_tgt": "lib_routing_torad",
+      "confidence_score": 1
+    },
+    {
+      "source": "lib_routing_nearestneighbor2opt",
+      "target": "lib_routing_edgedist",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/routing.js",
+      "source_location": "L172",
+      "weight": 1,
+      "_src": "lib_routing_nearestneighbor2opt",
+      "_tgt": "lib_routing_edgedist",
+      "confidence_score": 1
+    },
+    {
+      "source": "lib_routing_nearestneighbor2opt",
+      "target": "lib_routing_haversine",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/routing.js",
+      "source_location": "L154",
+      "weight": 1,
+      "_src": "lib_routing_nearestneighbor2opt",
+      "_tgt": "lib_routing_haversine",
+      "confidence_score": 1
+    },
+    {
+      "source": "lib_routing_parseexcel",
+      "target": "lib_routing_parsevarianta",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/routing.js",
+      "source_location": "L36",
+      "weight": 1,
+      "_src": "lib_routing_parseexcel",
+      "_tgt": "lib_routing_parsevarianta",
+      "confidence_score": 1
+    },
+    {
+      "source": "lib_routing_parseexcel",
+      "target": "lib_routing_parsevariantb",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/routing.js",
+      "source_location": "L31",
+      "weight": 1,
+      "_src": "lib_routing_parseexcel",
+      "_tgt": "lib_routing_parsevariantb",
+      "confidence_score": 1
+    },
+    {
+      "source": "lib_supabase",
+      "target": "lib_supabase_supabase",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/supabase.js",
+      "source_location": "L10",
+      "weight": 1,
+      "_src": "lib_supabase",
+      "_tgt": "lib_supabase_supabase",
+      "confidence_score": 1
+    },
+    {
+      "source": "src_app",
+      "target": "lib_routing",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.jsx",
+      "source_location": "L5",
+      "weight": 1,
+      "_src": "src_app",
+      "_tgt": "lib_routing",
+      "confidence_score": 1
+    },
+    {
+      "source": "src_app",
+      "target": "lib_routing_geocode",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.jsx",
+      "source_location": "L5",
+      "weight": 1,
+      "_src": "src_app",
+      "_tgt": "lib_routing_geocode",
+      "confidence_score": 1
+    },
+    {
+      "source": "src_app",
+      "target": "lib_routing_getroute",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.jsx",
+      "source_location": "L5",
+      "weight": 1,
+      "_src": "src_app",
+      "_tgt": "lib_routing_getroute",
+      "confidence_score": 1
+    },
+    {
+      "source": "src_app",
+      "target": "lib_routing_nearestneighbor2opt",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.jsx",
+      "source_location": "L5",
+      "weight": 1,
+      "_src": "src_app",
+      "_tgt": "lib_routing_nearestneighbor2opt",
+      "confidence_score": 1
+    },
+    {
+      "source": "src_app",
+      "target": "lib_routing_parseexcel",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.jsx",
+      "source_location": "L5",
+      "weight": 1,
+      "_src": "src_app",
+      "_tgt": "lib_routing_parseexcel",
+      "confidence_score": 1
+    },
+    {
+      "source": "src_app",
+      "target": "lib_routing_storage",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.jsx",
+      "source_location": "L5",
+      "weight": 1,
+      "_src": "src_app",
+      "_tgt": "lib_routing_storage",
+      "confidence_score": 1
+    },
+    {
+      "source": "src_app",
+      "target": "src_app_app",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.jsx",
+      "source_location": "L23",
+      "weight": 1,
+      "_src": "src_app",
+      "_tgt": "src_app_app",
+      "confidence_score": 1
+    },
+    {
+      "source": "vault:Liefern.md",
+      "target": "C:/Jakob/VSC/RouteFlow/SUPABASE-SETUP.md",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "source_file": "ast",
+      "_src": "vault:Liefern.md",
+      "_tgt": "C:/Jakob/VSC/RouteFlow/SUPABASE-SETUP.md",
+      "confidence_score": 0.5
+    },
+    {
+      "source": "vault:Liefern.md",
+      "target": "C:/Jakob/VSC/RouteFlow/src/App.jsx",
+      "relation": "describes",
+      "confidence": "INFERRED",
+      "source_file": "ast",
+      "_src": "vault:Liefern.md",
+      "_tgt": "C:/Jakob/VSC/RouteFlow/src/App.jsx",
+      "confidence_score": 0.5
+    },
+    {
+      "source": "vault:Liefern.md",
+      "target": "C:/Jakob/VSC/RouteFlow/src/lib/routing.js",
+      "relation": "describes",
+      "confidence": "INFERRED",
+      "source_file": "ast",
+      "_src": "vault:Liefern.md",
+      "_tgt": "C:/Jakob/VSC/RouteFlow/src/lib/routing.js",
+      "confidence_score": 0.5
+    }
+  ],
+  "hyperedges": []
+}
