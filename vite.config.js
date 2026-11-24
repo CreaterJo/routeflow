@@ -3,6 +3,25 @@ import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa'
 
 export default defineConfig({
+  server: {
+    proxy: {
+      '/api/nominatim': {
+        target: 'https://nominatim.openstreetmap.org',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api\/nominatim/, '')
+      },
+      '/api/photon': {
+        target: 'https://photon.komoot.io',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api\/photon/, '')
+      },
+      '/api/osrm': {
+        target: 'https://router.project-osrm.org',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api\/osrm/, '')
+      }
+    }
+  },
   plugins: [
     react(),
     VitePWA({

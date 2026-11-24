@@ -5,12 +5,12 @@
    ========================================================================== */
 
 :root {
-  /* ----- Farben: Primär (Tiefes Navy — Authority, Seriosität) ----- */
-  --color-primary: #071437;
-  --color-primary-hover: #0d1f4e;
-  --color-primary-light: #1a3a6e;
-  --color-primary-lighter: #e8edf5;
-  --color-primary-dark: #030a1b;
+  /* ----- Farben: Primär (Tiefes Grün — Natur & Logistik) ----- */
+  --color-primary: #11462B;
+  --color-primary-hover: #0C402D;
+  --color-primary-light: #1b5e3f;
+  --color-primary-lighter: #e6f0ea;
+  --color-primary-dark: #08281b;
 
   /* ----- Farben: Sekundär (Frisches Grün — Natur, Wachstum) ----- */
   --color-secondary: #50cd89;
@@ -87,7 +87,7 @@
   --space-16: 64px;
 
   /* ----- Typography: Cormorant Display, Montserrat UI ----- */
-  --font-display: 'Cormorant', 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: 'Cormorant', Georgia, serif;
   --font-ui: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 
@@ -1267,18 +1267,23 @@ p { color: var(--color-text-muted); line-height: var(--leading-relaxed); }
 }
 .stat-value--error { color: var(--color-error); }
 
-/* File upload */
-.file-upload-area {
-  position: relative;
+.text-sm-muted {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  margin-top: var(--space-1);
+}
+
+.upload-text-group {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: var(--space-4);
-  padding: var(--space-4);
-  background: var(--color-bg-alt);
-  border: 2px dashed var(--color-border-strong);
-  border-radius: var(--radius-lg);
-  transition: all var(--transition-fast);
-  cursor: pointer;
+  gap: var(--space-1);
+}
+
+.upload-strong {
+  font-size: var(--text-base);
+  font-weight: var(--font-semibold);
+  color: var(--color-text);
 }
 .file-upload-area:hover {
   border-color: var(--color-primary);

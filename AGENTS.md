@@ -22,3 +22,9 @@ React 19 + Vite single-page application (SPA) for delivery route optimization. F
 - For larger changes, rewrite the complete affected function or component.
 - Verify every change after editing.
 - Never claim a change was successful unless it was verified.
+
+## Progress
+
+- write everything in the obsidian vault "C:\Jakob\OBSJ\Jakob" read the agents.md there to know where you have to write it
+- if you want to know the designe look in the vault
+- start every anwser with "Hallo, Jakob"

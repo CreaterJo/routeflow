@@ -4,7 +4,6 @@
  * Variante A: Postleitzahl (PLZ+Ort kombiniert), Adresse, [Zahl]
  * Variante B: Postleitzahl, Ort, Straße und Hausnummer
  */
-import * as XLSX from 'xlsx'
 
 // ==========================================================================
 // Geocaching (localStorage + in-memory, 30 Tage TTL)
@@ -57,6 +56,7 @@ function _cacheKey(strasse, plz, ort) {
  * @returns {Promise<Array<{plz: string, ort: string, strasse: string, lat?: number, lng?: number}>>}
  */
 export async function parseExcel(file) {
+  const XLSX = await import('xlsx')
   const data = await file.arrayBuffer()
   const workbook = XLSX.read(data, { type: 'array' })
   const sheet = workbook.Sheets[workbook.SheetNames[0]]
@@ -143,15 +143,31 @@ function parseVariantA(rows, header) {
 async function geocodeAddress(strasse, plz, ort, retries = 2) {
   for (let attempt = 0; attempt <= retries; attempt++) {
     if (attempt > 0) {
-      // Exponential Backoff bei Rate-Limit: 2s, 4s
       await new Promise(resolve => setTimeout(resolve, 2000 * attempt))
     }
 
+    const normStrasse = strasse.replace(/\bstr\.?\b/gi, 'straße')
+    const altStrasse = strasse.replace(/ß/gi, 'ss').replace(/\bstrasse\b/gi, 'str.')
+    const streetOnly = strasse.replace(/\d+[a-z]?\s*$/, '').trim()
+    const normStreetOnly = normStrasse.replace(/\d+[a-z]?\s*$/, '').trim()
+
+    const fetchWithTimeout = async (url, options = {}, timeoutMs = 6000) => {
+      const controller = new AbortController()
+      const timer = setTimeout(() => controller.abort(), timeoutMs)
+      try {
+        const res = await fetch(url, { ...options, signal: controller.signal })
+        clearTimeout(timer)
+        return res
+      } catch (err) {
+        clearTimeout(timer)
+        throw err
+      }
+    }
+
     const queries = [
-      // 1. Standard: Straße, PLZ Ort, Germany
       () => {
         const q = `${strasse}, ${plz} ${ort}, Germany`
-        return fetch(`/api/nominatim/search?format=json&q=${encodeURIComponent(q)}&limit=1&addressdetails=1`, {
+        return fetchWithTimeout(`/api/nominatim/search?format=json&q=${encodeURIComponent(q)}&limit=1&addressdetails=1`, {
           headers: { 'User-Agent': 'RouteFlow/2.0 (https://routeflow.app)' }
         }).then(r => {
           if (r.status === 429) throw new Error('RATE_LIMIT')
@@ -159,21 +175,45 @@ async function geocodeAddress(strasse, plz, ort, retries = 2) {
           return r.json().then(data => ({ data, lat: parseFloat(data?.[0]?.lat), lng: parseFloat(data?.[0]?.lon), source: 'nominatim' }))
         })
       },
-      // 2. Ohne Hausnummer (falls Nummer Probleme macht)
       () => {
-        const streetOnly = strasse.replace(/\d+[a-z]?\s*$/, '').trim()
+        const q = `${normStrasse}, ${plz} ${ort}, Germany`
+        return fetchWithTimeout(`/api/nominatim/search?format=json&q=${encodeURIComponent(q)}&limit=1&addressdetails=1`, {
+          headers: { 'User-Agent': 'RouteFlow/2.0 (https://routeflow.app)' }
+        }).then(r => {
+          if (r.status === 429) throw new Error('RATE_LIMIT')
+          return r.json().then(data => ({ data, lat: parseFloat(data?.[0]?.lat), lng: parseFloat(data?.[0]?.lon), source: 'nominatim-norm' }))
+        })
+      },
+      () => {
         const q = `${streetOnly}, ${plz} ${ort}, Germany`
-        return fetch(`/api/nominatim/search?format=json&q=${encodeURIComponent(q)}&limit=1&addressdetails=1`, {
+        return fetchWithTimeout(`/api/nominatim/search?format=json&q=${encodeURIComponent(q)}&limit=1&addressdetails=1`, {
           headers: { 'User-Agent': 'RouteFlow/2.0 (https://routeflow.app)' }
         }).then(r => {
           if (r.status === 429) throw new Error('RATE_LIMIT')
           return r.json().then(data => ({ data, lat: parseFloat(data?.[0]?.lat), lng: parseFloat(data?.[0]?.lon), source: 'nominatim-no-hn' }))
         })
       },
-      // 3. Photon als Fallback
+      () => {
+        const q = `${normStreetOnly}, ${plz} ${ort}, Germany`
+        return fetchWithTimeout(`/api/nominatim/search?format=json&q=${encodeURIComponent(q)}&limit=1&addressdetails=1`, {
+          headers: { 'User-Agent': 'RouteFlow/2.0 (https://routeflow.app)' }
+        }).then(r => {
+          if (r.status === 429) throw new Error('RATE_LIMIT')
+          return r.json().then(data => ({ data, lat: parseFloat(data?.[0]?.lat), lng: parseFloat(data?.[0]?.lon), source: 'nominatim-norm-no-hn' }))
+        })
+      },
+      () => {
+        const q = `${altStrasse}, ${plz} ${ort}, Germany`
+        return fetchWithTimeout(`/api/nominatim/search?format=json&q=${encodeURIComponent(q)}&limit=1&addressdetails=1`, {
+          headers: { 'User-Agent': 'RouteFlow/2.0 (https://routeflow.app)' }
+        }).then(r => {
+          if (r.status === 429) throw new Error('RATE_LIMIT')
+          return r.json().then(data => ({ data, lat: parseFloat(data?.[0]?.lat), lng: parseFloat(data?.[0]?.lon), source: 'nominatim-alt-street' }))
+        })
+      },
       () => {
         const q = `${strasse} ${plz} ${ort}`
-        return fetch(`/api/photon/?q=${encodeURIComponent(q)}&limit=1`).then(r => {
+        return fetchWithTimeout(`/api/photon/?q=${encodeURIComponent(q)}&limit=1`).then(r => {
           if (r.status >= 500) throw new Error('SERVER_ERROR')
           return r.json().then(data => {
             const coords = data.features?.[0]?.geometry?.coordinates
@@ -182,17 +222,26 @@ async function geocodeAddress(strasse, plz, ort, retries = 2) {
           })
         })
       },
-      // 4. Nur PLZ + Ort (letzter Versuch)
+      () => {
+        const q = `${normStrasse} ${plz} ${ort}`
+        return fetchWithTimeout(`/api/photon/?q=${encodeURIComponent(q)}&limit=1`).then(r => {
+          if (r.status >= 500) throw new Error('SERVER_ERROR')
+          return r.json().then(data => {
+            const coords = data.features?.[0]?.geometry?.coordinates
+            if (!coords) throw new Error('NO_RESULT')
+            return { lat: coords[1], lng: coords[0], source: 'photon-norm' }
+          })
+        })
+      },
       () => {
         const q = `${plz} ${ort}, Germany`
-        return fetch(`/api/nominatim/search?format=json&q=${encodeURIComponent(q)}&limit=1&addressdetails=1`, {
+        return fetchWithTimeout(`/api/nominatim/search?format=json&q=${encodeURIComponent(q)}&limit=1&addressdetails=1`, {
           headers: { 'User-Agent': 'RouteFlow/2.0 (https://routeflow.app)' }
         }).then(r => r.json()).then(data => ({ data, lat: parseFloat(data?.[0]?.lat), lng: parseFloat(data?.[0]?.lon), source: 'nominatim-plz-ort' }))
       },
-      // 5. Umgekehrte Reihenfolge (PLZ Ort Straße)
       () => {
         const q = `${plz} ${ort} ${strasse}, Germany`
-        return fetch(`/api/nominatim/search?format=json&q=${encodeURIComponent(q)}&limit=1`, {
+        return fetchWithTimeout(`/api/nominatim/search?format=json&q=${encodeURIComponent(q)}&limit=1`, {
           headers: { 'User-Agent': 'RouteFlow/2.0 (https://routeflow.app)' }
         }).then(r => r.json()).then(data => ({ data, lat: parseFloat(data?.[0]?.lat), lng: parseFloat(data?.[0]?.lon), source: 'nominatim-alt' }))
       }
@@ -206,11 +255,9 @@ async function geocodeAddress(strasse, plz, ort, retries = 2) {
         }
       } catch (err) {
         if (err.message === 'RATE_LIMIT' && attempt < retries) {
-          // Weiter zum nächsten Versuch mit Backoff
           break
         }
         if (err.message === 'RATE_LIMIT') throw err
-        // Weiter zum nächsten Provider
       }
     }
   }
@@ -670,3 +717,4 @@ export const storage = {
     localStorage.removeItem(key)
   }
 }
+

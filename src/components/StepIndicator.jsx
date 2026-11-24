@@ -1,34 +1,26 @@
-import { motion } from 'framer-motion'
-
-export default function StepIndicator({ current, total, labels }) {
+export default function StepIndicator({ current, total: _total, labels }) {
   return (
-    <div className="step-indicator">
-      <div className="step-dot-wrapper">
-        {Array.from({ length: total }).map((_, i) => (
-          <motion.div
-            key={i}
-            className={`step-dot ${i < current ? 'completed' : i === current ? 'active' : ''}`}
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1, y: i === current ? 0 : 4 }}
-            exit={{ opacity: 0, scale: 0.8, y: 4 }}
-            transition={{ duration: 0.4, ease: 'easeOut' }}
+    <div className="step-indicator" style={{ display: 'flex', justifyContent: 'center', gap: 'var(--space-8)', marginBottom: 'var(--space-6)', fontSize: 'var(--text-sm)' }}>
+      {labels.map((label, index) => {
+        const stepNum = index + 1
+        const isActive = stepNum === current
+        const isCompleted = stepNum < current
+        return (
+          <div
+            key={index}
+            style={{
+              fontWeight: isActive ? 'var(--font-bold)' : 'var(--font-normal)',
+              color: isActive ? 'var(--color-primary)' : isCompleted ? 'var(--color-text)' : 'var(--color-text-muted)',
+              textDecoration: isActive ? 'underline' : 'none',
+              textUnderlineOffset: '6px',
+              textDecorationThickness: '2px',
+              transition: 'all var(--transition-base)'
+            }}
           >
-            <div className="step-dot" />
-          </motion.div>
-        ))}
-      </div>
-      <div className="step-line-wrapper">
-        <motion.div
-          className="step-line"
-          initial={{ width: 0 }}
-          animate={{ width: '100%' }}
-          exit={{ width: 0 }}
-          transition={{ duration: 0.4, ease: 'easeOut' }}
-        />
-      </div>
-      {labels.map((label, index) => (
-        <div key={index} className="step-label">{label}</div>
-      ))}
+            {label}
+          </div>
+        )
+      })}
     </div>
   )
 }

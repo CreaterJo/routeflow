@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Leaf, Sun } from 'lucide-react'
+import { Leaf, Sun, MapPin } from 'lucide-react'
 
 /**
  * Einmaliger Onboarding-Dialog: Name + Startadresse.

@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, lazy, Suspense } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Leaf, Settings, RefreshCw, Upload, Plus, Trash2, Zap, Map as MapIcon, User, Home } from 'lucide-react'
+import { Leaf, RefreshCw, Upload, Plus, Trash2, Zap, Map as MapIcon, User, Home } from 'lucide-react'
 import StepIndicator from './components/StepIndicator'
 import AddressInput from './components/AddressInput'
 import AddressList from './components/AddressList'
-import MapView from './components/MapView'
+const MapView = lazy(() => import('./components/MapView'))
 import OnboardingModal from './components/OnboardingModal'
 import { ToastContainer } from './hooks/useToast'
 import useToast from './hooks/useToast'
@@ -12,8 +12,7 @@ import { geocodeBatch, getRoute, nearestNeighbor2Opt, geocode, parseExcel, stora
 
 // ========== Step 1: Willkomen / Adressen ==========
 function StepAddresses({ startAddress, addresses, loading, error, geocodeProgress, user,
-  onAddAddresses, onRemoveAddress, onClear, onCalculate,
-  onToggleMode, mode }) {
+  onAddAddresses, onRemoveAddress, onClear, onCalculate }) {
   const [showModal, setShowModal] = useState(false)
   const [fileError, setFileError] = useState('')
 
@@ -59,29 +58,27 @@ function StepAddresses({ startAddress, addresses, loading, error, geocodeProgres
   }
 
   return (
-    <div className="card" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-6)' }}>
-      <div>
-        <h2 style={{ fontSize: 'var(--text-xl)', fontWeight: 'var(--font-bold)', color: 'var(--color-text)', display: 'flex', alignItems: 'center', gap: 'var(--space-2)' }}>
-          <Leaf size={20} color="var(--color-primary)" />
-          Adresse(n) hinzufügen
+    <div className="card card-padded" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-6)', width: '100%', maxWidth: '100%', boxSizing: 'border-box' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-1.5)' }}>
+        <h2 style={{ fontSize: 'var(--text-lg)', fontWeight: 'var(--font-medium)', color: 'var(--color-text)', margin: 0, letterSpacing: '-0.01em', wordBreak: 'break-word' }}>
+          Adressen hinzufügen
         </h2>
-        <p style={{ fontSize: 'var(--text-sm)', color: 'var(--color-text-muted)', marginTop: 'var(--space-1)' }}>
-          Laden Sie eine Excel-Datei oder fügen Sie Adressen manuell hinzu.
+        <p style={{ fontSize: 'var(--text-sm)', color: 'var(--color-text-muted)', margin: 0, lineHeight: 1.5, wordBreak: 'break-word' }}>
+          Laden Sie eine Excel-Datei hoch oder fügen Sie Adressen manuell hinzu.
         </p>
       </div>
 
-      {/* Startadresse anzeigen */}
+{/* Startadresse anzeigen */}
       <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)', padding: 'var(--space-3)', background: 'var(--color-bg-alt)', borderRadius: 'var(--radius-lg)', border: '1px solid var(--color-border)' }}>
-        <Home size={18} color="var(--color-primary)" />
+        <div style={{ width: 24, height: 24, borderRadius: 'var(--radius-md)', background: 'var(--color-primary)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <Home size={14} color="white" />
+        </div>
         <div style={{ flex: 1 }}>
           <div style={{ fontSize: 'var(--text-xs)', color: 'var(--color-text-muted)', textTransform: 'uppercase', letterSpacing: 'var(--letter-spacing-sm)' }}>Start (Hub)</div>
           <div style={{ fontSize: 'var(--text-sm)', color: 'var(--color-text)' }}>
             {startAddress.strasse}, {startAddress.plz} {startAddress.ort}
           </div>
         </div>
-        <button className="btn btn-secondary btn-sm" onClick={() => setShowModal(true)}>
-          <Settings size={14} /> Ändern
-        </button>
       </div>
 
       <OnboardingModal
@@ -108,9 +105,7 @@ function StepAddresses({ startAddress, addresses, loading, error, geocodeProgres
           <Upload size={28} color="var(--color-primary)" />
           <div>
             <strong>XLSX, XLS oder CSV</strong> hochladen
-            <div style={{ fontSize: 'var(--text-xs)', color: 'var(--color-text-muted)', marginTop: 'var(--space-1)' }}>
-              Spalten: strasse, plz, ort
-            </div>
+             <div className="text-sm-muted">Spalten: strasse, plz, ort</div>
           </div>
         </div>
         {fileError && <span className="field-error">{fileError}</span>}
@@ -141,16 +136,13 @@ function StepAddresses({ startAddress, addresses, loading, error, geocodeProgres
       )}
 
       {/* Footer */}
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: 'var(--space-4)', borderTop: '1px solid var(--color-border)' }}>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', paddingTop: 'var(--space-4)', borderTop: '1px solid var(--color-border)' }}>
         <div style={{ display: 'flex', gap: 'var(--space-2)' }}>
           {addresses.length > 0 && (
             <button className="btn btn-ghost btn-sm" onClick={onClear}>
               <Trash2 size={14} /> Alle löschen
             </button>
           )}
-          <button className="btn btn-ghost btn-sm" onClick={onToggleMode}>
-            <Settings size={14} /> {mode === 'cloud' ? '☁ Cloud' : '💾 Lokal'}
-          </button>
         </div>
         <button
           className="btn btn-primary"
@@ -196,7 +188,7 @@ function StepResult({ route, addresses, startAddress, onResetTour, onResetAll })
         <h3 style={{ fontSize: 'var(--text-lg)', fontWeight: 'var(--font-semibold)', marginBottom: 'var(--space-3)', display: 'flex', alignItems: 'center', gap: 'var(--space-2)' }}>
           <MapIcon size={20} color="var(--color-primary)" /> Deine optimierte Route
         </h3>
-        <MapView points={route.points} routeOrder={route.order} distance={route.distance} duration={route.duration} routeGeometry={route.routeGeometry} googleMapsLink={route.googleMapsLink} />
+        <Suspense fallback={null}><MapView points={route.points} routeOrder={route.order} distance={route.distance} duration={route.duration} routeGeometry={route.routeGeometry} googleMapsLink={route.googleMapsLink} /></Suspense>
       </div>
 
       {/* Google Maps Button */}
@@ -293,7 +285,6 @@ export default function App() {
   const [showOnboarding, setShowOnboarding] = useState(false)
   const [step, setStep] = useState(2)
   const [user, setUser] = useState(null)
-  const [mode, setMode] = useState('local')
   const [startAddress, setStartAddress] = useState({ plz: '', ort: '', strasse: '' })
   const [addresses, setAddresses] = useState([])
   const [route, setRoute] = useState(null)
@@ -473,20 +464,11 @@ export default function App() {
 
   return (
     <div className="app-root">
-      {/* Background Blobs */}
-      <div className="bg-blob bg-blob--1" />
-      <div className="bg-blob bg-blob--2" />
-      <div className="bg-blob bg-blob--3" />
-
       {/* Header */}
       <header className="app-header">
         <div className="header-content">
-          <div className="brand" style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)' }}>
-            <div className="brand-icon">
-              <Leaf size={20} color="white" />
-            </div>
-            <span className="brand-name">RouteFlow</span>
-            <span className="badge" style={{ background: 'var(--color-secondary)', color: 'white', fontSize: 'var(--text-xs)' }}>Beta</span>
+          <div className="brand" style={{ display: 'flex', alignItems: 'center' }}>
+            <img src="/logo.svg" alt="RouteFlow" style={{ height: '48px', objectFit: 'contain' }} />
           </div>
           <div className="header-meta" style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-4)' }}>
             {user && (
@@ -555,8 +537,6 @@ export default function App() {
                       onRemoveAddress={removeAddress}
                       onClear={clearAddresses}
                       onCalculate={calculateRoute}
-                      onToggleMode={toggleMode}
-                      mode={mode}
                     />
                   )}
 
